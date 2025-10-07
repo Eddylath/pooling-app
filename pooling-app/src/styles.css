@@ -6,11 +6,10 @@
     --bg-color-3: #2e3a3a;
 }
 
-body {
+html {
     background-image: url(../src/assets/bg-image.png);
     background-size: contain;
     height: 100vh;
-    overflow: hidden;
 }
 
 h1 {
@@ -47,4 +46,12 @@ input:focus,
 input:hover {
     border-color: var(--bg-color-2);
     outline: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.f-column {
+    flex-direction: column;
 }
