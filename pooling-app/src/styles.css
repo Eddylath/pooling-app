@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --disabled-color: #a0a0a0;
+    --bg-color-1: #a3c6c9;
+    --bg-color-2: #617779;
+    --bg-color-3: #2e3a3a;
+}
+
+body {
+    background-image: url(../src/assets/bg-image.png);
+    background-size: contain;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    color: var(--bg-color-3);
+}
+
+.primary-button {
+    height: 3rem;
+    width: 21.5rem;
+    border-radius: 0.5rem;
+    padding: 5px;
+    margin: 10px;
+    border: none;
+    background-color: var(--bg-color-3);
+    color: white;
+    cursor: pointer;
+}
+
+.primary-button:disabled {
+    background-color: var(--disabled-color);
+    cursor: auto;
+}
+
+input {
+    border: 2px solid var(--bg-color-1);
+    height: 2rem;
+    width: 20rem;
+    border-radius: 0.5rem;
+    padding: 5px 10px;
+    margin: 10px;
+}
+
+input:focus,
+input:hover {
+    border-color: var(--bg-color-2);
+    outline: none;
+}
