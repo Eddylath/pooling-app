@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login/login.component';
-import { isAuthorized } from './secure/auth.guard';
+import { isAuthorized, loseFormData } from './secure/auth.guard';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -19,6 +18,7 @@ export const routes: Routes = [
     {
         path: 'addride',
         loadComponent: () => import('./secure/add-ride/add-ride.component').then(m => m.AddRideComponent),
-        canActivate: [isAuthorized]
+        canActivate: [isAuthorized],
+        canDeactivate: [loseFormData]
     },
 ];
