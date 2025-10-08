@@ -33,7 +33,7 @@ h1 {
     cursor: auto;
 }
 
-input {
+input, select {
     border: 2px solid var(--bg-color-1);
     height: 2rem;
     width: 20rem;
@@ -42,8 +42,15 @@ input {
     margin: 10px;
 }
 
+select {
+    height: 2.5rem;
+    width: 22rem;
+}
+
 input:focus,
-input:hover {
+input:hover,
+select:focus,
+select:hover {
     border-color: var(--bg-color-2);
     outline: none;
 }
@@ -54,4 +61,14 @@ input:hover {
 
 .f-column {
     flex-direction: column;
+}
+
+.flex-gap-1 {
+    gap: 1rem;
+}
+
+.error,
+.error:hover,
+.error:focus {
+    border-color: red;
 }
