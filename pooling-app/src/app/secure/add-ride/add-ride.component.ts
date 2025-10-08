@@ -18,11 +18,17 @@ import { CommonModule } from '@angular/common';
   styleUrl: './add-ride.component.css'
 })
 export class AddRideComponent {
-  	addRideForm: FormGroup;
+  	addRideForm!: FormGroup;
+
+	formOpen: boolean = true;
 
 	vehicleTypes = ['Car', 'Bike', 'Scooter', 'Bicycle', 'Bus', 'Truck'];
 
 	constructor(private fb: FormBuilder) {
+		this.initiateForm();
+	}
+
+	initiateForm() {
 		this.addRideForm = this.fb.group({
 			empId: ['', [Validators.required]],
 			vehicleType: [this.vehicleTypes[0]],
@@ -47,5 +53,16 @@ export class AddRideComponent {
 
 	isFieldInvalid(control: string) {
 		return this.addRideForm.get(control)?.touched && this.addRideForm.get(control)?.errors;
+	}
+
+	onSubmit() {
+		this.formOpen = false;
+	}
+
+	addMore() {
+		this.formOpen = true;
+		
+		//reset removes the 2 of the initial values
+		this.initiateForm();
 	}
 }
