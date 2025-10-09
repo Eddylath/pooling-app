@@ -1,1 +1,103 @@
-<p>book-ride works!</p>
+<div class="flex" *ngIf="formOpen; else saveMessage">
+    <form [formGroup]="bookRideForm">
+        <div class="form-wrapper flex f-column">
+            <div class="flex f-gap-1 f-x-baseline">
+                <label>Employee Id</label>
+                <input
+                    class="input"
+                    type="text"
+                    formControlName="empId"
+                    [ngClass]="{'error': isFieldInvalid('empId')}"
+                >
+            </div>
+            <div class="flex f-gap-1 f-x-baseline">
+                <label>Ride time</label>
+                <input
+                    class="input"
+                    type="time"
+                    [ngClass]="{'error': isFieldInvalid('rideTime')}"
+                    formControlName="rideTime"
+                >
+            </div>
+            <div class="flex f-gap-1 f-x-baseline">
+                <label>Pickup location</label>
+                <input
+                    class="input"
+                    type="text"
+                    formControlName="pickupLocation"
+                    placeholder="Office/Bellandur etc"
+                    [ngClass]="{'error': isFieldInvalid('dropLocation')}"
+                >
+            </div>
+            <div class="flex f-gap-1 f-x-baseline">
+                <label>Drop location</label>
+                <input
+                    class="input"
+                    type="text"
+                    formControlName="dropLocation"
+                    placeholder="Office/Bellandur etc"
+                    [ngClass]="{'error': isFieldInvalid('dropLocation')}"
+                >
+            </div>
+            <div class="flex f-gap-1 f-x-baseline">
+                <label></label>
+                <button
+                    class="primary-button"
+                    [disabled]="isSearchDisabled()"
+                    (click)="onSearch()"
+                >Search</button>
+            </div>
+        </div>
+    </form>
+    @if(showTable) {
+        <div class="flex f-column f-x-center">
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Provider emp ID</th>
+                        <th>Vehicle type</th>
+                        <th>Vehicle number</th>
+                        <th>Total seats</th>
+                        <th>Seats available</th>
+                        <th>Ride time</th>
+                        <th>Pickup location</th>
+                        <th>drop location</th>
+                    </tr>
+                    @for(ride of ridesToShow; track ride) {
+                        <tr>
+                            <td>
+                                <input
+                                    type="radio"
+                                    name="ride"
+                                    [(ngModel)]="selectedRide"
+                                    [value]="ride.id"
+                                >
+                            </td>
+                            <td>{{ride.empId}}</td>
+                            <td>{{ride.vehicleType}}</td>
+                            <td>{{ride.vehicleNumber}}</td>
+                            <td>{{ride.seatsAvailable}}</td>
+                            <td>{{ride.seatsAvailable - ride.alreadyBookedBy.length}}</td>
+                            <td>{{ride.rideTime}}</td>
+                            <td>{{ride.pickupLocation}}</td>
+                            <td>{{ride.dropLocation}}</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <button
+                class="primary-button"
+                [disabled]="!selectedRide"
+                (click)="onSubmit()"
+            >Book ride</button>
+        </div>
+    }
+</div>
+
+<ng-template #saveMessage>
+    <div class="flex f-column f-x-center">
+        <h1>Your ride has been booked successfully</h1>
+        <button class="primary-button" (click)="addMore()">Add more</button>
+    </div>
+</ng-template>

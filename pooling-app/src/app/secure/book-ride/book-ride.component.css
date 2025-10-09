@@ -1,0 +1,13 @@
+label {
+    flex: 1;
+    text-align: end;
+}
+
+input {
+    flex: 1;
+}
+
+.form-wrapper{
+    margin-top: 25px;
+    width: 25vw;
+}

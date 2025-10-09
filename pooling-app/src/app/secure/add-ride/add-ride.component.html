@@ -1,15 +1,16 @@
 <form [formGroup]="addRideForm" *ngIf="formOpen; else saveMessage">
     <div class="flex">
-        <div class="flex f-column flex-x-center">
-            <div class="input-wrapper flex flex-gap-1">
+        <div class="flex f-column f-x-center">
+            <div class="flex f-gap-1 f-x-baseline">
                 <label>Employee ID</label>
                 <input
+                    class="input"
                     type="text"
                     [ngClass]="{'error': isFieldInvalid('empId')}"
                     formControlName="empId"
                 >
             </div>
-            <div class="input-wrapper flex flex-gap-1">
+            <div class="flex f-gap-1 f-x-baseline">
                 <label>Vehicle type</label>
                 <select formControlName="vehicleType">
                     @for(type of vehicleTypes; track type) {
@@ -17,45 +18,50 @@
                     }
                 </select>
             </div>
-            <div class="input-wrapper flex flex-gap-1">
+            <div class="flex f-gap-1 f-x-baseline">
                 <label>Vehicle number</label>
                 <input
+                    class="input"
                     type="text"
                     [ngClass]="{'error': isFieldInvalid('vehicleNumber')}"
                     formControlName="vehicleNumber"
                     placeholder="MH-01-BH-0001"
                 >
             </div>
-            <div class="input-wrapper flex flex-gap-1">
+            <div class="flex f-gap-1 f-x-baseline">
                 <label>Seats available</label>
                 <input
+                    class="input"
                     type="number"
                     [ngClass]="{'error': isFieldInvalid('seatsAvailable')}"
                     formControlName="seatsAvailable"
                 >
             </div>
         </div>
-        <div class="flex f-column flex-x-center">
-            <div class="input-wrapper flex flex-gap-1">
+        <div class="flex f-column f-x-center">
+            <div class="flex f-gap-1 f-x-baseline">
                 <label>Ride time</label>
                 <input
+                    class="input"
                     type="time"
                     [ngClass]="{'error': isFieldInvalid('rideTime')}"
                     formControlName="rideTime"
                 >
             </div>
-            <div class="input-wrapper flex flex-gap-1">
+            <div class="flex f-gap-1 f-x-baseline">
                 <label>Pickup location</label>
                 <input
+                    class="input"
                     type="text"
                     formControlName="pickupLocation"
                     placeholder="Office/Bellandur etc"
                     [ngClass]="{'error': isFieldInvalid('dropLocation')}"
                 >
             </div>
-            <div class="input-wrapper flex flex-gap-1">
+            <div class="flex f-gap-1 f-x-baseline">
                 <label>Drop location</label>
                 <input
+                    class="input"
                     type="text"
                     formControlName="dropLocation"
                     placeholder="Office/Bellandur etc"
@@ -74,8 +80,8 @@
 </form>
 
 <ng-template #saveMessage>
-    <div class="flex f-column flex-x-center">
-        <h1>Your message have been saved</h1>
+    <div class="flex f-column f-x-center">
+        <h1>Your ride has been saved successfully</h1>
         <button class="primary-button" (click)="addMore()">Add more</button>
     </div>
 </ng-template>

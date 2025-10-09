@@ -33,7 +33,7 @@ h1 {
     cursor: auto;
 }
 
-input, select {
+.input, select {
     border: 2px solid var(--bg-color-1);
     height: 2rem;
     width: 20rem;
@@ -47,8 +47,8 @@ select {
     width: 22rem;
 }
 
-input:focus,
-input:hover,
+.input:focus,
+.input:hover,
 select:focus,
 select:hover {
     border-color: var(--bg-color-2);
@@ -70,10 +70,29 @@ select:hover {
     flex-direction: column;
 }
 
-.flex-gap-1 {
+.f-gap-1 {
     gap: 1rem;
 }
 
-.flex-x-center {
+.f-x-center {
     align-items: center;
+}
+
+.f-x-baseline {
+    align-items: center;
+}
+
+/* table */
+th, td {
+    border: 1px solid green;
+    padding: 1rem;
+    text-align: left;
+}
+
+.table-container {
+  max-height: 450px;
+  height: fit-content;
+  overflow-y: auto;
+  border: 1px solid green;
+  margin: 25px 100px;
 }

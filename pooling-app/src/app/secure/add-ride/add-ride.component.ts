@@ -7,6 +7,7 @@ import {
 	isVehicleNumberValid
 } from './add-ride.validators';
 import { CommonModule } from '@angular/common';
+import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-add-ride',
@@ -22,9 +23,12 @@ export class AddRideComponent {
 
 	formOpen: boolean = true;
 
-	vehicleTypes = ['Car', 'Bike', 'Scooter', 'Bicycle', 'Bus', 'Truck'];
+	vehicleTypes = ['Car', 'Bike', 'Scooter', 'Bus', 'Truck'];
 
-	constructor(private fb: FormBuilder) {
+	constructor(
+		private fb: FormBuilder,
+		private service: AppService
+	) {
 		this.initiateForm();
 	}
 
@@ -57,6 +61,19 @@ export class AddRideComponent {
 
 	onSubmit() {
 		this.formOpen = false;
+		const value = this.addRideForm.value;
+
+		this.service.availableRides.push({
+			id: this.service.availableRides.length + 1,
+			empId: value.empId,
+    		vehicleType: value.vehicleType,
+    		vehicleNumber: value.vehicleNumber,
+    		seatsAvailable: value.seatsAvailable,
+    		rideTime: value.rideTime,
+    		pickupLocation: value.pickupLocation,
+    		dropLocation: value.dropLocation,
+    		alreadyBookedBy: []
+		})
 	}
 
 	addMore() {
