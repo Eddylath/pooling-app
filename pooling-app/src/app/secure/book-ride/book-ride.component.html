@@ -1,4 +1,4 @@
-<div class="flex" *ngIf="formOpen; else saveMessage">
+<div class="flex" *ngIf="formOpen; else SaveMessage">
     <form [formGroup]="bookRideForm">
         <div class="form-wrapper flex f-column">
             <div class="flex f-gap-1 f-x-baseline">
@@ -50,7 +50,7 @@
         </div>
     </form>
     @if(showTable) {
-        <div class="flex f-column f-x-center">
+        <div class="flex f-column f-x-center" *ngIf="ridesToShow.length; else NoDataPresent">
             <div class="table-container">
                 <table>
                     <tr>
@@ -95,9 +95,14 @@
     }
 </div>
 
-<ng-template #saveMessage>
+<ng-template #SaveMessage>
     <div class="flex f-column f-x-center">
         <h1>Your ride has been booked successfully</h1>
         <button class="primary-button" (click)="addMore()">Add more</button>
+    </div>
+</ng-template>
+<ng-template #NoDataPresent>
+    <div class="no-data flex f-x-center">
+        <h3>No data to show</h3>
     </div>
 </ng-template>

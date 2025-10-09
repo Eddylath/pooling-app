@@ -121,5 +121,6 @@ export class BookRideComponent {
 		this.formOpen = false;
 		
 		this.service.availableRides[this.selectedRide-1].alreadyBookedBy.push(this.bookRideForm.value.empId);
+		this.selectedRide = 0;
 	}
 }

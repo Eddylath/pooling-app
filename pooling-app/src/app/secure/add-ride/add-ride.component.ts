@@ -74,6 +74,7 @@ export class AddRideComponent {
     		dropLocation: value.dropLocation,
     		alreadyBookedBy: []
 		})
+		this.addRideForm.reset();
 	}
 
 	addMore() {

@@ -11,3 +11,9 @@ input {
     margin-top: 25px;
     width: 25vw;
 }
+
+.no-data {
+    height: 350px;
+    width: 50vw;
+    justify-content: center;
+}

@@ -5,9 +5,9 @@ import { AddRideComponent } from "./add-ride/add-ride.component";
 
 export const isAuthorized: CanActivateFn = () => {
     const router = inject(Router);
-    const service = inject(AppService)
+    const service = inject(AppService);
 
-    return service.employeeId ? true : router.navigate([''])
+    return service.employeeId ? true : router.navigate(['']);
 }
 
 export const loseFormData: CanDeactivateFn<AddRideComponent> = (component: AddRideComponent) => {
