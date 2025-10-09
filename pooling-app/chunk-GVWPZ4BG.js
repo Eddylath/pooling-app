@@ -1,1 +1,0 @@
-import{Ka as n,La as i,Ra as p,wa as t}from"./chunk-KWSPVR2Z.js";var r=class o{static \u0275fac=function(e){return new(e||o)};static \u0275cmp=t({type:o,selectors:[["app-book-ride"]],decls:2,vars:0,template:function(e,a){e&1&&(n(0,"p"),p(1,"book-ride works!"),i())},encapsulation:2})};export{r as BookRideComponent};
